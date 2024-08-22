@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="hero px-6 py-10  ">
+        <form action="/create" method="post">
+       <input type="text" name="title" class="placeholder:text-white placeholder:opacity-70 rounded text-white bg-zinc-400 block w-full p-3 outline-none" placeholder="TITILE GOES HERE" >
+        <textarea  name="detail" class="placeholder:text-white placeholder:opacity-70 text-xl rounded bg-zinc-400 mt-5 w-full p-3 resize-none text-white outline-none" placeholder="Details"></textarea>
+        <input type="submit" class="py-2 px-4 text-white bg-blue-400 rounded mt-4" >
+        </form>
+    </div>
+
+    
+    <div class="tasks px-6 flex flex-wrap  ">
+        <% if(Files.length>0) {%>
+        <% Files.forEach(function(val){%>
+            <div class="items bg-zinc-400 w-72 h-auto p-2 mr-4 min-w-52 mt-4 rounded">
+                <h2 class="text-xl "><%=val%></h2>
+                <div class="flex justify-between items-center mt-4">
+                    <a href="/files/<%= val %>" class="text-blue-900  underline underline-offset-2">Read More</a>
+                    <a href="/edit/<%=val%>"  class="text-zinc-600 ">Edit filename</a>
+                </div>
+           </div>
+        <%})%> 
+        <%} else{ %>
+            <h2>Not yet anything</h2>
+            <%}%>
+           
+        
+    </div>
+</body>
+</html>
